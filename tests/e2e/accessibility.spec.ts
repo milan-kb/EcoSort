@@ -6,6 +6,14 @@ test('WCAG AA automated checks on the public and three role journeys', async ({ 
   async function audit(path: string) {
     await page.goto(path);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    for (const label of await page.locator('.sr-only').all()) {
+      await expect(label).toHaveCSS('position', 'absolute');
+      await expect(label).toHaveCSS('width', '1px');
+      await expect(label).toHaveCSS('height', '1px');
+      await expect(label).toHaveCSS('overflow', 'hidden');
+      await expect(label).not.toHaveCSS('display', 'none');
+      await expect(label).not.toHaveCSS('visibility', 'hidden');
+    }
     const result = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
       .analyze();

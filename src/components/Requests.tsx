@@ -112,14 +112,12 @@ export function RequestList({
 export function FilteredRequests({
   requests,
   table = false,
-  initialStatus = '',
 }: {
   requests: WasteRequest[];
   table?: boolean;
-  initialStatus?: string;
 }) {
   const [search, setSearch] = useState(''),
-    [status, setStatus] = useState(initialStatus),
+    [status, setStatus] = useState(''),
     [ward, setWard] = useState(''),
     [category, setCategory] = useState(''),
     [kind, setKind] = useState(''),

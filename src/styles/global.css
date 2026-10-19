@@ -28,11 +28,6 @@ dd,
   flex-shrink: 0;
 }
 
-@theme {
-  --color-forest: #173d30;
-  --color-sage: #e8efdf;
-  --color-canvas: #f6f7f2;
-}
 :root {
   font-family:
     Inter,
@@ -189,17 +184,6 @@ textarea:focus {
 ::selection {
   background: #dceac7;
 }
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 .skip-link {
   position: fixed;
   left: 16px;
@@ -221,7 +205,6 @@ textarea:focus {
   font-size: 10px;
   font-weight: 650;
   letter-spacing: 0.14em;
-  color: #6c7b64;
   line-height: 1.6;
   margin: 0 0 12px;
   text-transform: uppercase;
@@ -418,7 +401,6 @@ textarea:focus {
 }
 .status-cancelled {
   background: #eff0ed;
-  color: #6b716c;
 }
 .status-rejected {
   background: #f7eae6;
@@ -490,7 +472,6 @@ textarea:focus {
   align-items: center;
   gap: 12px;
   padding: 24px 8px;
-  color: #74806e;
 }
 .quiet-note p {
   font-size: 11px;
@@ -726,7 +707,6 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
   color: #6a766b;
 }
 .topbar-divider {
@@ -784,10 +764,6 @@ textarea:focus {
   padding: 4px 6px;
   border-radius: 4px;
 }
-.demo-description {
-  color: #6a7960;
-  font-size: 10px;
-}
 .demo-controls {
   display: flex;
   align-items: center;
@@ -819,8 +795,6 @@ textarea:focus {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  font-size: 9px;
-  color: #7a8574;
   padding: 24px 40px;
   border-top: 1px solid var(--line);
 }
@@ -875,7 +849,6 @@ textarea:focus {
 }
 .hero-description {
   font-size: 14px;
-  color: #74806d;
   line-height: 1.9;
 }
 .hero-actions {
@@ -893,7 +866,6 @@ textarea:focus {
   align-items: center;
   gap: 8px;
   font-size: 10px;
-  color: #88917c;
 }
 .hero-workflow {
   background: white;
@@ -926,7 +898,6 @@ textarea:focus {
 }
 .workflow-number {
   font-size: 9px;
-  color: #95a18b;
   width: 14px;
 }
 .workflow-icon {
@@ -946,7 +917,6 @@ textarea:focus {
 }
 .workflow-item p {
   font-size: 10px;
-  color: #8a9381;
   margin: 6px 0 0;
 }
 .workflow-item > svg {
@@ -962,7 +932,6 @@ textarea:focus {
   padding: 14px;
   border-radius: 8px;
   margin-top: 32px;
-  color: #718166;
 }
 .landing-principles {
   background: #eaf0df;
@@ -989,7 +958,6 @@ textarea:focus {
 }
 .landing-principles p {
   font-size: 12px;
-  color: #6b7d5d;
   margin: 0;
   max-width: 660px;
 }
@@ -1025,7 +993,6 @@ textarea:focus {
 }
 .entry-card p {
   font-size: 12px;
-  color: #7a8571;
   max-width: 270px;
 }
 .entry-card > span {
@@ -1048,7 +1015,6 @@ textarea:focus {
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  color: #839075;
   font-size: 10px;
 }
 .public-footer .brand {
@@ -1078,7 +1044,6 @@ textarea:focus {
   line-height: 1.2;
 }
 .auth-intro p:not(.eyebrow) {
-  color: #76836c;
   font-size: 14px;
 }
 .auth-intro > svg {
@@ -1087,7 +1052,6 @@ textarea:focus {
   margin: 56px 0 12px;
 }
 .auth-intro small {
-  color: #7b8b6f;
   font-size: 10px;
 }
 .auth-card {
@@ -1295,7 +1259,6 @@ textarea:focus {
 }
 .action-card p {
   font-size: 10px;
-  color: #7b8573;
   margin: 6px 0 0;
 }
 .action-card > svg {
@@ -1342,8 +1305,6 @@ textarea:focus {
 }
 .stat-label {
   display: block;
-  color: #6c7864;
-  font-size: 11px;
 }
 .resident-stats .stat-label {
   font-size: 10px;
@@ -1393,13 +1354,11 @@ textarea:focus {
   justify-content: space-between;
 }
 .request-id {
-  font-size: 11px;
   font-weight: 650;
   letter-spacing: 0.01em;
   white-space: nowrap;
 }
 .request-card h3 {
-  font-size: 12px;
   letter-spacing: 0;
   margin: 7px 0;
 }
@@ -1407,7 +1366,6 @@ textarea:focus {
   font-weight: 400;
 }
 .request-card p {
-  font-size: 10px;
   margin: 0;
   overflow-wrap: anywhere;
 }
@@ -1421,11 +1379,7 @@ textarea:focus {
   color: #839674;
   margin-left: 16px;
 }
-.request-card-top > .small {
-  font-size: 9px;
-}
 .overdue {
-  color: #9b702b;
   font-size: 9px;
 }
 .form-layout {
@@ -1452,7 +1406,6 @@ textarea:focus {
 }
 .form-aside p {
   font-size: 12px;
-  color: #728166;
 }
 .form-aside .text-link {
   font-size: 10px;
@@ -1559,7 +1512,6 @@ textarea:focus {
 }
 .guide-card p {
   font-size: 12px;
-  color: #6d7a64;
 }
 .guide-caution {
   display: flex;
@@ -1571,7 +1523,6 @@ textarea:focus {
   border-radius: 8px;
   padding: 12px;
   margin-top: auto;
-  color: #7c795b;
 }
 /* Admin */
 .admin-stats {
@@ -1585,18 +1536,12 @@ textarea:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
   margin-bottom: 24px;
 }
 .stat-card-head svg {
   color: #8a9a79;
 }
-.stat-card-head .stat-label {
-  font-size: 10px;
-}
 .stat-note {
-  font-size: 9px;
-  color: #89927e;
   display: block;
   margin-top: 8px;
 }
@@ -1620,7 +1565,6 @@ textarea:focus {
 }
 .attention-strip p {
   font-size: 10px;
-  color: #8a846c;
   margin: 6px 0 0;
 }
 .attention-strip > .text-link {
@@ -1667,8 +1611,6 @@ textarea:focus {
   letter-spacing: -0.05em;
 }
 .donut-center span {
-  font-size: 9px;
-  color: #8a957f;
   margin-top: 2px;
 }
 .chart-legend {
@@ -1681,8 +1623,6 @@ textarea:focus {
   justify-content: space-between;
   gap: 16px;
   margin: 14px 0;
-  font-size: 9px;
-  color: #6c7965;
 }
 .chart-legend li > span {
   display: flex;
@@ -1699,7 +1639,6 @@ textarea:focus {
 }
 .chart-legend strong {
   color: #3c5238;
-  font-size: 10px;
 }
 .impact-card {
   background: #f0f4e8;
@@ -1732,12 +1671,9 @@ textarea:focus {
   margin-left: 2px;
 }
 .impact-card > p {
-  font-size: 10px;
-  color: #748368;
   margin-bottom: 16px;
 }
 .impact-card > p.small {
-  font-size: 9px;
   line-height: 1.7;
 }
 .progress-track {
@@ -1758,10 +1694,6 @@ textarea:focus {
   border-bottom: 1px solid #dce4d1;
   margin: 20px 0;
 }
-.impact-card .section-heading > span {
-  font-size: 10px;
-  color: #6d7f5c;
-}
 .impact-card .section-heading > strong {
   font-size: 18px;
 }
@@ -1779,8 +1711,6 @@ textarea:focus {
   white-space: nowrap;
 }
 .requests-table th {
-  font-size: 9px;
-  color: #86927a;
   font-weight: 500;
   background: #f7f9f2;
   padding: 12px 16px;
@@ -1789,7 +1719,6 @@ textarea:focus {
 .requests-table td {
   padding: 18px 16px;
   border-bottom: 1px solid #edf0e8;
-  font-size: 11px;
   vertical-align: middle;
 }
 .requests-table tr:last-child td {
@@ -1809,12 +1738,7 @@ textarea:focus {
 }
 .requests-table td small {
   display: block;
-  color: #859078;
-  font-size: 9px;
   margin-top: 6px;
-}
-.requests-table td .overdue {
-  color: #9b702b;
 }
 .location-cell {
   max-width: 220px;
@@ -1861,7 +1785,6 @@ textarea:focus {
   align-items: center;
   gap: 8px;
   font-size: 10px;
-  color: #7d8b73;
 }
 .filter-summary .text-button {
   font-size: 10px;
@@ -1872,7 +1795,6 @@ textarea:focus {
   gap: 8px;
   white-space: nowrap;
   font-size: 10px;
-  color: #758169;
 }
 .inline-checkbox input {
   width: 14px;
@@ -1917,7 +1839,6 @@ textarea:focus {
 .task-tabs button {
   padding: 0 0 16px;
   font-size: 12px;
-  color: #85917c;
   border-bottom: 2px solid transparent;
   display: flex;
   align-items: center;
@@ -1947,7 +1868,6 @@ textarea:focus {
   align-items: center;
   gap: 8px;
   font-size: 10px;
-  color: #819071;
   margin-bottom: 12px;
 }
 .task-card h2 {
@@ -1958,7 +1878,6 @@ textarea:focus {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  color: #69795f;
   font-size: 12px;
   min-height: 40px;
 }
@@ -1967,7 +1886,6 @@ textarea:focus {
   flex-wrap: wrap;
   gap: 8px;
   font-size: 9px;
-  color: #7c8b6e;
   margin: 16px 0 24px;
 }
 .task-meta span {
@@ -2003,8 +1921,6 @@ textarea:focus {
   margin: 24px 0;
 }
 .details-grid dt {
-  font-size: 10px;
-  color: #839076;
   margin-bottom: 8px;
 }
 .details-grid dd {
@@ -2072,8 +1988,6 @@ textarea:focus {
   height: 27px;
   border-radius: 50%;
   border: 1px solid #e2e8da;
-  background: #f4f7ee;
-  color: #a2af92;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2089,7 +2003,6 @@ textarea:focus {
   display: block;
   font-size: 12px;
   font-weight: 500;
-  color: #89977e;
   line-height: 1.6;
 }
 .timeline .done strong {
@@ -2097,8 +2010,6 @@ textarea:focus {
 }
 .timeline small {
   display: block;
-  font-size: 9px;
-  color: #9aa58f;
   margin-top: 4px;
 }
 .assigned-person {
@@ -2121,7 +2032,6 @@ textarea:focus {
   margin-top: 4px;
 }
 .timeline-card > p {
-  font-size: 9px;
   margin-bottom: 0;
 }
 .assignment-card {
@@ -2190,7 +2100,6 @@ textarea:focus {
 }
 .about-purpose > p {
   font-size: 12px;
-  color: #738367;
 }
 .journey-strip {
   display: flex;
@@ -2232,7 +2141,6 @@ textarea:focus {
   justify-content: space-between;
   align-items: center;
   font-size: 10px;
-  color: #74856a;
   background: #fafbf6;
 }
 .leaflet-map {
@@ -2257,13 +2165,11 @@ textarea:focus {
   gap: 4px;
   padding: 12px 16px;
   font-size: 9px;
-  color: #839176;
   line-height: 1.6;
   border-top: 1px solid var(--line);
 }
 .map-caption > span {
   font-size: 9px;
-  color: #829175;
 }
 .map-legend {
   display: flex;
@@ -2277,7 +2183,6 @@ textarea:focus {
   gap: 6px;
   align-items: center;
   font-size: 10px;
-  color: #6a7f5c;
 }
 .leaflet-container {
   font-family: inherit !important;
@@ -2435,7 +2340,6 @@ textarea:focus {
     margin-top: 36px;
   }
   .sidebar nav a {
-    font-size: 11px;
     padding: 12px 10px;
     gap: 10px;
   }
@@ -2630,9 +2534,6 @@ textarea:focus {
   .timeline strong {
     font-size: 11px;
   }
-  .timeline small {
-    font-size: 8px;
-  }
   .timeline .timeline-dot {
     z-index: 1;
   }
@@ -2791,9 +2692,6 @@ textarea:focus {
   .demo-controls > .btn {
     font-size: 9px;
   }
-  .demo-controls > .btn > span {
-    display: none;
-  }
   .demo-controls > .btn {
     padding: 5px 8px;
   }
@@ -2803,7 +2701,6 @@ textarea:focus {
   }
   .workspace-footer {
     padding: 16px 24px 96px;
-    font-size: 8px;
   }
   .workspace-footer > span:last-child {
     display: none;
@@ -2892,12 +2789,6 @@ textarea:focus {
   .action-card p {
     font-size: 9px;
   }
-  .request-card h3 {
-    font-size: 12px;
-  }
-  .request-card-top > .small {
-    font-size: 9px;
-  }
   .form-aside {
     display: block;
   }
@@ -2931,9 +2822,6 @@ textarea:focus {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 8px;
-  }
-  .chart-legend li {
-    font-size: 8px;
   }
   .donut-wrapper {
     min-width: 160px;
@@ -3201,7 +3089,6 @@ textarea:focus {
     width: 230px;
     transform: scale(0.65);
     transform-origin: center right;
-    opacity: 0.8;
     margin: 0;
     gap: 12px;
   }
@@ -3283,23 +3170,10 @@ textarea:focus {
     padding: 16px 0;
   }
   .request-card h3 {
-    font-size: 11px;
     line-height: 1.6;
   }
   .request-card h3 .muted {
     display: block;
-  }
-  .request-card p {
-    font-size: 9px;
-  }
-  .request-card-top {
-    gap: 8px;
-  }
-  .request-id {
-    font-size: 10px;
-  }
-  .request-card-top > .small {
-    font-size: 8px;
   }
   .request-card .card-arrow {
     display: none;
@@ -3343,11 +3217,6 @@ textarea:focus {
   }
   .field small {
     font-size: 10px;
-  }
-  .field input,
-  .field textarea,
-  .field select {
-    font-size: 12px;
   }
   .location-details {
     padding: 12px;
@@ -3441,12 +3310,6 @@ textarea:focus {
   .admin-stats .stat-label {
     font-size: 10px;
   }
-  .stat-value {
-    font-size: 28px;
-  }
-  .stat-note {
-    font-size: 8px;
-  }
   .dashboard-charts {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -3468,7 +3331,6 @@ textarea:focus {
   }
   .chart-legend li {
     margin: 14px 0;
-    font-size: 8px;
     gap: 8px;
   }
   .chart-legend li > span {
@@ -3483,12 +3345,6 @@ textarea:focus {
   }
   .impact-card .section-heading h2 {
     font-size: 17px;
-  }
-  .impact-card > p {
-    font-size: 11px;
-  }
-  .impact-card > p.small {
-    font-size: 10px;
   }
   .attention-strip {
     align-items: flex-start;
@@ -3526,7 +3382,6 @@ textarea:focus {
     display: block;
     border: 0;
     padding: 0;
-    font-size: 11px;
   }
   .requests-table td:first-child {
     grid-column: 1;
@@ -3545,8 +3400,6 @@ textarea:focus {
   .requests-table td:nth-child(4) {
     grid-column: 1;
     grid-row: 4;
-    font-size: 9px;
-    color: #849477;
   }
   .requests-table td:nth-child(5) {
     grid-column: 2;
@@ -3564,7 +3417,6 @@ textarea:focus {
     font-size: 9px !important;
   }
   .requests-table td small {
-    font-size: 8px;
     margin-top: 4px;
   }
   .filters {
@@ -3632,9 +3484,6 @@ textarea:focus {
   .details-grid {
     gap: 24px 16px;
   }
-  .details-grid dt {
-    font-size: 9px;
-  }
   .details-grid dd {
     font-size: 11px;
   }
@@ -3653,16 +3502,9 @@ textarea:focus {
   .timeline {
     gap: 8px;
   }
-  .timeline strong {
-    font-size: 9px;
-  }
-  .timeline small {
-    font-size: 7px;
-  }
   .timeline-dot {
     height: 24px;
     width: 24px;
-    font-size: 9px;
   }
   .timeline li:not(:last-child):before {
     top: 12px;
@@ -3896,7 +3738,6 @@ textarea:focus {
   }
   .bins-illustration {
     right: -83px;
-    opacity: 0.55;
   }
   .resident-hero p {
     max-width: 190px;
@@ -3917,17 +3758,11 @@ textarea:focus {
   .donut-wrapper {
     min-width: 140px;
   }
-  .chart-legend li {
-    font-size: 7px;
-  }
   .page-title h1 {
     font-size: 24px;
   }
   .timeline strong {
     font-size: 8px;
-  }
-  .timeline small {
-    font-size: 7px;
   }
   .badge {
     font-size: 9px;

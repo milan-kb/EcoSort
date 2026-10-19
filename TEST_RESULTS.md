@@ -87,3 +87,24 @@ The final independent audit additionally repaired the 11 defect groups detailed 
 Online OSM tile availability, browser GPS on physical devices, external Google Maps navigation, Safari/Firefox, production hosting headers and real-world collection/treatment operations were not verified. No AI, municipal integration, OTP, verified treatment outcome or actual collection service is claimed.
 
 Connected auth intentionally uses memory-only sessions, so refresh requires sign-in. Full-workspace snapshots and local demo quotas have documented scaling limits. Production privacy/retention, erasure/export operations, backups and post-completion corrections require an operational policy before handling real personal data. See `README.md` for setup and limitations.
+
+## Behavior-preserving Ponytail cleanup — 19 October 2026
+
+The results above remain the historical final QA record. This separate cleanup reran checks before and after removing verified redundancy; no database migrations, dependencies or persistence/business logic changed. No commit or push was performed.
+
+- Confirmed all 99 candidate CSS declarations are superseded by a later declaration for the same selector/property, in the same conditional scope or an unconditional rule. Specificity, media conditions, pseudo-state selectors and `!important` were preserved. Removed the resulting 24 empty rule blocks, not the winning rules.
+- Confirmed Tailwind already generates `.sr-only` clipping/positioning; removed the duplicate custom rule. New browser assertions check its one-pixel size, absolute positioning, hidden overflow and absence of `display:none`/`visibility:hidden` on the public/role accessibility journeys.
+- Confirmed the three custom theme variables have no source consumers or compiled CSS output; removed their five-line `@theme` block. These were three tokens, not five independent tokens.
+- Inlined the single-use collection icon wrapper and removed the filter's unused `initialStatus` option after checking every caller.
+- Exact source reduction: **165 CSS lines**, **3 net collection-component lines**, **2 net request-component lines** = **170 net source lines**. Eight regression-test lines were added: **162 net lines removed across source and tests**, before this documentation entry.
+
+| Check                                         | Before                 | After                                                           |
+| --------------------------------------------- | ---------------------- | --------------------------------------------------------------- |
+| Typecheck, lint, formatting, production build | Passed                 | Passed                                                          |
+| Unit/component tests                          | 14 passed              | 14 passed                                                       |
+| Full browser suite                            | 18 passed              | 18 passed, including strengthened screen-reader-only assertions |
+| Embedded PostgreSQL scenarios                 | Not rerun for baseline | 16 passed after cleanup                                         |
+
+With the same fixed date, synthetic seed, browser locale/timezone and viewport settings, **all 51 full-page screenshot pairs were pixel-identical**, including Resident, Collector and Panchayat at 375×812, 768×1024 and 1440×900. All **93 computed-style/layout comparisons matched**: the 51 page states plus main-role checks around media-query boundaries, forced colors and normal/reduced motion. No captured runtime/console errors occurred. The full pickup → assignment → physical confirmation/destination → resident completion → dashboard journey and persisted refresh passed both full browser runs.
+
+Before/after images, the declaration-to-winner audit and comparison evidence are retained under ignored `qa-artifacts/ponytail-cleanup/`. No visual regression required restoring a removal. Verification used Chromium/automated accessibility checks, not Safari/Firefox or a manual screen-reader certification; hosted Supabase limitations remain unchanged.

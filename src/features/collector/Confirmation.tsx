@@ -82,7 +82,7 @@ export function Confirmation() {
         })}
       >
         <div className="info-note">
-          <TruckInfo />
+          <CheckCheck size={22} />
           <span>
             {request.waste_category} · {request.quantity}
             <br />
@@ -153,7 +153,4 @@ export function Confirmation() {
       </form>
     </>
   );
-}
-function TruckInfo() {
-  return <CheckCheck size={22} />;
 }
