@@ -87,6 +87,22 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/signin" element={<AuthPage key="signin" />} />
+          <Route path="/signin/:roleParam" element={<AuthPage key="signin-role" />} />
+          <Route path="/login" element={<AuthPage key="login" />} />
+          <Route path="/login/:roleParam" element={<AuthPage key="login-role" />} />
+          <Route
+            path="/resident/login"
+            element={<AuthPage key="resident-login" defaultRole="resident" />}
+          />
+          <Route
+            path="/collector/login"
+            element={<AuthPage key="collector-login" defaultRole="collector" />}
+          />
+          <Route path="/admin/login" element={<AuthPage key="admin-login" defaultRole="admin" />} />
+          <Route
+            path="/panchayat/login"
+            element={<AuthPage key="panchayat-login" defaultRole="admin" />}
+          />
           <Route path="/signup" element={<AuthPage key="signup" signup />} />
           <Route element={<Guard />}>
             <Route element={<Layout />}>
