@@ -26,6 +26,9 @@ export function PublicHeader() {
       <Brand />
       <nav aria-label="Public navigation">
         <Link to="/about">Our purpose</Link>
+        <Link to="/resident/login">Resident</Link>
+        <Link to="/collector/login">Collector</Link>
+        <Link to="/admin/login">Panchayat</Link>
         <Link className="btn btn-secondary" to="/signin">
           Sign in <ArrowRight size={16} />
         </Link>
@@ -294,18 +297,33 @@ export function AuthPage({
   const submit = handleSubmit(async (values) => {
     setError('');
     try {
-      if (!supabase)
-        throw new Error(
-          app.error ||
-            'Connected authentication is unavailable in demo mode. Use instant demo entry.',
-        );
+      const client = supabase;
+      if (!client) {
+        if (signup) {
+          const res = app.demoProfiles.find((p) => p.role === 'resident') || app.demoProfiles[0];
+          if (res) {
+            app.switchDemo(res.id);
+            navigate(homeFor('resident'));
+            return;
+          }
+        } else {
+          // Seamless demo login: match active role
+          const target = app.demoProfiles.find((p) => p.role === activeRole) || app.demoProfiles[0];
+          if (target) {
+            app.switchDemo(target.id);
+            navigate(homeFor(target.role));
+            return;
+          }
+        }
+        return;
+      }
       const result = signup
-        ? await supabase.auth.signUp({
+        ? await client.auth.signUp({
             email: values.email,
             password: values.password,
             options: { data: { name: values.name, phone: values.phone, ward: values.ward } },
           })
-        : await supabase.auth.signInWithPassword({
+        : await client.auth.signInWithPassword({
             email: values.email,
             password: values.password,
           });

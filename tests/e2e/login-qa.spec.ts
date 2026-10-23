@@ -495,16 +495,13 @@ test.describe('Authentication form submission and validation', () => {
     await expect(page.getByText('Use at least 8 characters')).toBeVisible();
   });
 
-  test('submitting credentials in demo mode shows guidance notice', async ({ page }) => {
+  test('submitting credentials in demo mode signs in to the role workspace', async ({ page }) => {
     await page.goto('/signin/resident');
     await page.getByLabel('Resident email').fill('resident@example.test');
     await page.getByLabel('Password').fill('password123');
     await page.getByRole('button', { name: 'Sign in as Resident' }).click();
-    await expect(
-      page.getByText(
-        'Connected authentication is unavailable in demo mode. Use instant demo entry.',
-      ),
-    ).toBeVisible();
+    await expect(page).toHaveURL('/resident');
+    await expect(page.getByText('Anjali Menon')).toBeVisible();
   });
 
   test('repeated form submissions do not duplicate requests or crash', async ({ page }) => {
