@@ -39,8 +39,13 @@ for (const viewport of [
     for (const path of routes) {
       if (path === '/collector')
         await page.getByLabel('Demo role').selectOption({ label: 'Collector · Ravi Kumar' });
-      if (path === '/admin')
+      if (path === '/admin') {
         await page.getByLabel('Demo role').selectOption({ label: 'Administrator' });
+        // Let the lazy workspace finish before a hard navigation aborts its module request.
+        await expect(
+          page.getByRole('heading', { name: 'A cleaner community, in view.', exact: true }),
+        ).toBeVisible();
+      }
       await page.goto(path);
       await expect(page.locator('main h1, main h2').first()).toBeVisible();
       if (path === '/admin/map' || path === '/resident/dumping') {

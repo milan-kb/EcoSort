@@ -69,7 +69,7 @@ E-waste/hazardous jobs require the `authorized_hazardous` destination type. The 
 
 Open the Pending request, select a collector, click **Assign collector**, then **Confirm assignment**. The status becomes Assigned and the collector gains job access. You must check real availability, transport and waste-specific handling arrangements yourself. Reassignment replaces the old active assignment and revokes that collector's request access unless another qualifying assignment exists. Once work is In Progress, reassignment is locked.
 
-Statistics derive from stored records, not live municipal feeds. Completion excludes Cancelled/Rejected records from its denominator. Category and ward charts count requests, not kilograms or residents. The segregation number counts confirmed pickup requests, even where the dashboard uses the phrase “Households confirming segregation”; it is not a distinct-household total. See [calculation details](ARCHITECTURE.md#statistics-and-map-behavior).
+Statistics derive from stored records, not live municipal feeds. Completion excludes Cancelled/Rejected records from its denominator. Category and ward charts count requests, not kilograms or residents. **Segregated pickup requests** counts confirmed pickup requests, not distinct households. See [calculation details](ARCHITECTURE.md#statistics-and-map-behavior).
 
 ## Shared pages and access
 

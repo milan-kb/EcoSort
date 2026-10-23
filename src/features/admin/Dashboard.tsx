@@ -124,7 +124,7 @@ export function Dashboard() {
           </p>
           <div className="impact-divider" />
           <div className="section-heading">
-            <span>Households confirming segregation</span>
+            <span>Segregated pickup requests</span>
             <strong>{stats.segregated}</strong>
           </div>
           <TextLink to="/admin/analytics">Explore analytics</TextLink>

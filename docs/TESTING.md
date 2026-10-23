@@ -2,6 +2,8 @@
 
 This guide explains which checks to run and how to interpret them. Dated execution evidence belongs in [TEST_RESULTS.md](../TEST_RESULTS.md) and [FINAL_QA_REPORT.md](../FINAL_QA_REPORT.md), not an invented coverage badge.
 
+The later [real-world audit](../REAL_WORLD_TEST_REPORT.md) records actual Chromium/Firefox runs, localhost/OSM traffic, network faults and bounded tab concurrency. [tests/e2e/real-world.spec.ts](../tests/e2e/real-world.spec.ts) preserves the offline local-workspace and segregation-counter-label regressions found there. Hosted Supabase remains a separate blocked gate.
+
 ## Commands
 
 Run from the folder containing `package.json` after `npm ci`:

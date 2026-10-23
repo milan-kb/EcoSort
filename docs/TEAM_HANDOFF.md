@@ -64,9 +64,9 @@ No tasks are assigned to named people here. Agree on scope and file overlap befo
 
 The missing-profile SQL closure authorization bypass was fixed in migration 2 and has a regression. **Applying only migration 1 retains the historical bug.** Migration 3 adds phone digit validation without scanning existing rows. Local QA found no unresolved P0/P1 defect in the tested demo journey.
 
-Hosted Supabase Auth/email/JWT, Storage HTTP validation/signing, deployed policies and cross-device behavior remain **unverified without credentials**. Connected tokens stay in memory, so reload requires sign-in. Full authorized snapshots suit a small pilot; concurrent connected contention/load and network-retry idempotency remain unverified. Physical-device GPS, real tile availability/navigation and Safari/Firefox are also outstanding. See [TEST_RESULTS.md](../TEST_RESULTS.md) for the exact tested boundary.
+Hosted Supabase Auth/email/JWT, Storage HTTP validation/signing, deployed policies and cross-device behavior remain **unverified without credentials**. Connected tokens stay in memory, so reload requires sign-in. Full authorized snapshots suit a small pilot; concurrent connected contention/load and network-retry idempotency remain unverified. The [20 October audit](../REAL_WORLD_TEST_REPORT.md) exercised headless Chromium/Firefox and real OSM tile responses; WebKit launch, physical-device GPS/Safari and external navigation remain outstanding. See [TEST_RESULTS.md](../TEST_RESULTS.md) for the historical tested boundary.
 
-One label to explain accurately: dashboard “Households confirming segregation” counts confirmed pickup **requests**, not distinct households. No behavior was changed for this documentation task; [Architecture](ARCHITECTURE.md#statistics-and-map-behavior) records the calculation.
+The dashboard's segregation metric counts confirmed pickup **requests**, not distinct households. The 20 October real-world audit corrected its label to **Segregated pickup requests** without changing the calculation; [Architecture](ARCHITECTURE.md#statistics-and-map-behavior) records it.
 
 ## H. Before submitting or presenting
 

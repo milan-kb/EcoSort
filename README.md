@@ -186,6 +186,8 @@ Actual run results and outstanding checks are recorded in **[TEST_RESULTS.md](TE
 
 See **[FINAL_QA_REPORT.md](FINAL_QA_REPORT.md)** for the independent adversarial audit, fixes and release recommendation. Representative fictional screenshots are generated in `qa-artifacts/`; all-page screenshots are in Playwright's `test-results/`.
 
+The later **[real-world testing report](REAL_WORLD_TEST_REPORT.md)** records Chromium/Firefox workflows, actual tile requests, offline recovery, bounded tab concurrency and production-preview measurements, with separate demo/connected/municipal verdicts. Hosted Supabase remains blocked without a test project.
+
 ## Architecture
 
 ```text
@@ -212,7 +214,7 @@ React + TypeScript + Vite, Tailwind CSS, React Router, Lucide, TanStack Query, R
 - Actual handover is collector-reported. There is no independent treatment verification, facility receipt workflow or post-completion correction interface.
 - Browser storage quotas and last-writer-wins limit the demo. No PWA caching or offline synchronization in connected mode.
 - No hotspot prediction or image AI is included. Add those only after real operational data and validation exist.
-- Cross-device connected testing, physical-device GPS and Safari/Firefox remain unverified. The [final QA report](FINAL_QA_REPORT.md) distinguishes executed PostgreSQL/browser checks from hosted checks that are blocked.
+- Cross-device connected testing, physical-device GPS and physical Safari remain unverified. Headless Firefox 157 was exercised on Linux; WebKit launch was blocked by missing host libraries. The [real-world testing report](REAL_WORLD_TEST_REPORT.md) gives the exact environment and remaining gates.
 
 ## Documentation index
 

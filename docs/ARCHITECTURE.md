@@ -64,7 +64,7 @@ React state holds temporary form inputs, filters and modal feedback. **TanStack 
 
 The `Repository` interface defines `load`, `create`, `assign`, `start`, `complete`, `close`, `updateProfile` and `imageUrl`. Screens call that contract instead of implementing persistence themselves. Shared Zod schemas validate form/repository inputs; PostgreSQL independently enforces connected permissions and integrity.
 
-Query defaults: five-second stale time, one retry, refresh on window focus. Successful UI mutations invalidate workspace queries. Connected mode additionally polls every ten seconds; this is **not** a Realtime subscription. Demo storage events invalidate workspace queries when another tab changes the demo key, but do not make concurrent writes safe.
+Query defaults: five-second stale time, one retry, refresh on window focus. Successful UI mutations invalidate workspace queries. Demo queries use `networkMode: 'always'` because localStorage reads do not need a connection; connected queries retain online network mode. Connected mode additionally polls every ten seconds; this is **not** a Realtime subscription. Demo storage events invalidate workspace queries when another tab changes the demo key, but do not make concurrent writes safe.
 
 ## Demo persistence
 
@@ -89,7 +89,7 @@ Email/password access is handled by Supabase Auth. Signup creates resident profi
 
 ## Statistics and map behavior
 
-`statistics()` in [domain.ts](../src/lib/domain.ts) is the shared source for totals: total includes every request; pending/unassigned counts Pending; active counts Assigned plus In Progress; collected counts Collected. Rate is rounded `Collected / eligible × 100`, excluding Cancelled/Rejected from eligible, or zero when empty. `segregated` counts explicitly confirmed pickup **requests**, not distinct households (the dashboard label is broader than this actual calculation).
+`statistics()` in [domain.ts](../src/lib/domain.ts) is the shared source for totals: total includes every request; pending/unassigned counts Pending; active counts Assigned plus In Progress; collected counts Collected. Rate is rounded `Collected / eligible × 100`, excluding Cancelled/Rejected from eligible, or zero when empty. `segregated`, labeled **Segregated pickup requests**, counts explicitly confirmed pickup requests, not distinct households.
 
 [Analytics.tsx](../src/features/admin/Analytics.tsx) groups all submitted requests by category/ward, including closed ones. Fourteen-day activity counts submissions by UTC creation date, not completed pickups. Follow-up is a heuristic: unfinished records with a preferred date before today's UTC date, or without a date and older than seven days.
 

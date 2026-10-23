@@ -102,6 +102,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     queryKey: ['workspace', actor?.id, actor?.role],
     queryFn: () => repository!.load(actor!),
     enabled: !!actor && !!repository,
+    networkMode: isDemo ? 'always' : 'online',
     refetchInterval: isDemo ? false : 10000,
   });
   useEffect(() => {
