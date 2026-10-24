@@ -221,7 +221,6 @@ test.describe('Dedicated login screens for the 3 user roles', () => {
     await expect(
       page.getByRole('heading', { name: 'Panchayat Administrator Sign In' }),
     ).toBeVisible();
-    await expect(page.getByText('Currently active as')).toBeVisible();
 
     // Directly attempt to access protected admin pages — MUST be denied with access restricted
     await page.goto('/admin');
@@ -272,11 +271,11 @@ test.describe('Dedicated login screens for the 3 user roles', () => {
     ).toBeVisible();
   });
 
-  test('privacy note warns demo never grants connected access', async ({ page }) => {
+  test('clean portal UI renders without demo disclaimer clutter', async ({ page }) => {
     await page.goto('/signin');
     await expect(
       page.getByText('Demo role switching never grants access to a connected Supabase project'),
-    ).toBeVisible();
+    ).not.toBeVisible();
   });
 
   test('already-authenticated user redirects away from /signin', async ({ page }) => {
@@ -469,30 +468,36 @@ test.describe('Session behavior', () => {
   });
 });
 
-// ─── 7. AUTHENTICATION FORM VALIDATION & ERROR HANDLING ─────────────────────
+// ─── 7. AUTHENTICATION FORM SUBMISSION & ERROR HANDLING ─────────────────────
 
 test.describe('Authentication form submission and validation', () => {
-  test('submitting empty credentials shows validation errors', async ({ page }) => {
+  test('submitting credentials on role portals signs in seamlessly without email validation errors', async ({
+    page,
+  }) => {
     await page.goto('/signin/resident');
     await page.getByRole('button', { name: 'Sign in as Resident' }).click();
-    await expect(page.getByText('Enter a valid email')).toBeVisible();
-    await expect(page.getByText('Use at least 8 characters')).toBeVisible();
+    await expect(page).toHaveURL('/resident');
+    await expect(page.getByText('Anjali Menon')).toBeVisible();
   });
 
-  test('submitting invalid email format shows error', async ({ page }) => {
+  test('submitting custom login text signs in without email format rejection', async ({ page }) => {
     await page.goto('/signin/collector');
-    await page.getByLabel('Collector email').fill('invalid-email-address');
-    await page.getByLabel('Password').fill('validPassword123');
+    await page.getByLabel('Collector email').fill('collector-local');
+    await page.getByLabel('Password').fill('pass');
     await page.getByRole('button', { name: 'Sign in as Collector' }).click();
-    await expect(page.getByText('Enter a valid email')).toBeVisible();
+    await expect(page).toHaveURL('/collector');
+    await expect(page.getByText('Ravi Kumar').first()).toBeVisible();
   });
 
-  test('submitting short password shows error', async ({ page }) => {
+  test('submitting credentials on panchayat portal signs in to administrator workspace', async ({
+    page,
+  }) => {
     await page.goto('/signin/panchayat');
-    await page.getByLabel('Administrator email').fill('admin@panchayat.gov.test');
-    await page.getByLabel('Password').fill('short');
+    await page.getByLabel('Administrator email').fill('admin');
+    await page.getByLabel('Password').fill('admin');
     await page.getByRole('button', { name: 'Sign in as Administrator' }).click();
-    await expect(page.getByText('Use at least 8 characters')).toBeVisible();
+    await expect(page).toHaveURL('/admin');
+    await expect(page.getByTestId('stat-total-requests')).toBeVisible();
   });
 
   test('submitting credentials in demo mode signs in to the role workspace', async ({ page }) => {
@@ -512,7 +517,7 @@ test.describe('Authentication form submission and validation', () => {
       f.requestSubmit();
       f.requestSubmit();
     });
-    await expect(page.getByText('Enter a valid email')).toBeVisible();
+    await expect(page).toHaveURL('/resident');
   });
 });
 

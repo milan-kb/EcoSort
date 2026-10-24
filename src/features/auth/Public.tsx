@@ -133,60 +133,53 @@ export function Landing() {
             pretending software can replace a real collection system.
           </p>
         </section>
-        {app.demo && (
-          <section className="demo-entry">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">TRY EVERY SIDE OF THE STORY</p>
-                <h2>Your classroom-ready workspace</h2>
-              </div>
-              <span className="badge">Offline-ready demo</span>
+        <section className="demo-entry">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">TRY EVERY SIDE OF THE STORY</p>
+              <h2>Your classroom-ready workspace</h2>
             </div>
-            <div className="three-grid">
-              {[
-                {
-                  role: 'resident',
-                  icon: Leaf,
-                  title: 'As a resident',
-                  text: 'Separate waste, request collection and track progress.',
-                  path: '/resident/login',
-                },
-                {
-                  role: 'collector',
-                  icon: Truck,
-                  title: 'As a collector',
-                  text: 'Find assigned jobs and record physical collection.',
-                  path: '/collector/login',
-                },
-                {
-                  role: 'admin',
-                  icon: ClipboardList,
-                  title: 'As an administrator',
-                  text: 'Coordinate people, review requests and see the bigger picture.',
-                  path: '/admin/login',
-                },
-              ].map(({ role, icon: Icon, title, text, path }) => (
-                <button key={role} className="entry-card" onClick={() => navigate(path)}>
-                  <Icon size={25} />
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                  <span>
-                    {role === 'resident'
-                      ? 'Resident Login'
-                      : role === 'collector'
-                        ? 'Collector Login'
-                        : 'Panchayat Login'}{' '}
-                    <ArrowRight size={17} />
-                  </span>
-                </button>
-              ))}
-            </div>
-            <p className="muted small">
-              All people, addresses and location pins in demo mode are synthetic. Changes stay in
-              this browser.
-            </p>
-          </section>
-        )}
+          </div>
+          <div className="three-grid">
+            {[
+              {
+                role: 'resident',
+                icon: Leaf,
+                title: 'As a resident',
+                text: 'Separate waste, request collection and track progress.',
+                path: '/resident/login',
+              },
+              {
+                role: 'collector',
+                icon: Truck,
+                title: 'As a collector',
+                text: 'Find assigned jobs and record physical collection.',
+                path: '/collector/login',
+              },
+              {
+                role: 'admin',
+                icon: ClipboardList,
+                title: 'As an administrator',
+                text: 'Coordinate people, review requests and see the bigger picture.',
+                path: '/admin/login',
+              },
+            ].map(({ role, icon: Icon, title, text, path }) => (
+              <button key={role} className="entry-card" onClick={() => navigate(path)}>
+                <Icon size={25} />
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <span>
+                  {role === 'resident'
+                    ? 'Resident Login'
+                    : role === 'collector'
+                      ? 'Collector Login'
+                      : 'Panchayat Login'}{' '}
+                  <ArrowRight size={17} />
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
       </main>
       <footer className="public-footer">
         <Brand />
@@ -200,6 +193,13 @@ export function Landing() {
 const authSchema = profileSchema.extend({
   email: z.email('Enter a valid email'),
   password: z.string().min(8, 'Use at least 8 characters').max(128),
+});
+const signinSchema = z.object({
+  name: z.string(),
+  phone: z.string(),
+  ward: z.string(),
+  email: z.string(),
+  password: z.string(),
 });
 type AuthValues = z.infer<typeof authSchema>;
 export function AuthPage({
@@ -281,11 +281,7 @@ export function AuthPage({
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<AuthValues>({
-    resolver: zodResolver(
-      signup
-        ? authSchema
-        : authSchema.extend({ name: z.string(), phone: z.string(), ward: z.string() }),
-    ),
+    resolver: zodResolver(signup ? authSchema : signinSchema),
     defaultValues: { name: '', phone: '', ward: '' },
   });
 
@@ -440,14 +436,6 @@ export function AuthPage({
                 </Link>
               </nav>
 
-              {app.actor && (
-                <div className="info-note small" style={{ marginBottom: '16px' }}>
-                  Currently active as <strong>{app.actor.name}</strong> (
-                  {app.actor.role === 'admin' ? 'Panchayat Administrator' : app.actor.role}). You
-                  can sign in below to switch accounts.
-                </div>
-              )}
-
               {/* Role Card Header */}
               <div className="auth-card-header">
                 <div className="role-icon">
@@ -508,24 +496,15 @@ export function AuthPage({
                 )}
               </form>
 
-              {/* Instant Demo Entry Section */}
               {app.demo && (
-                <div className="demo-quick-section">
-                  <div className="demo-section-heading">
-                    <h4>Demo Mode · Instant Access</h4>
-                    <span className="badge">No credentials needed</span>
-                  </div>
-                  <p className="small muted">
-                    {isRoleSpecific
-                      ? `Instant demo entry for ${activeRole === 'admin' ? 'Panchayat Administration' : activeRole}:`
-                      : 'Choose a demo workspace to enter without signing in:'}
-                  </p>
+                <div className="demo-quick-section" style={{ marginTop: '20px' }}>
                   <div className="demo-role-list">
                     {app.demoProfiles
                       .filter((p) => (isRoleSpecific ? p.role === activeRole : true))
                       .map((p) => (
                         <button
                           key={p.id}
+                          type="button"
                           className="btn btn-secondary"
                           onClick={() => {
                             app.switchDemo(p.id);
@@ -540,35 +519,6 @@ export function AuthPage({
                           <ArrowRight size={18} />
                         </button>
                       ))}
-
-                    {isRoleSpecific && (
-                      <div className="other-demo-links">
-                        <small className="muted">Other demo workspaces:</small>{' '}
-                        {app.demoProfiles
-                          .filter((p) => p.role !== activeRole)
-                          .map((p) => (
-                            <button
-                              key={p.id}
-                              type="button"
-                              className="text-link small"
-                              onClick={() => {
-                                app.switchDemo(p.id);
-                                navigate(homeFor(p.role));
-                              }}
-                            >
-                              {p.role === 'admin'
-                                ? 'Panchayat Administrator'
-                                : p.role === 'resident'
-                                  ? 'Resident'
-                                  : `Collector (${p.name.split(' ')[0]})`}
-                            </button>
-                          ))}
-                      </div>
-                    )}
-                  </div>
-                  <div className="info-note" style={{ marginTop: '12px' }}>
-                    Fictional examples only. Demo role switching never grants access to a connected
-                    Supabase project.
                   </div>
                 </div>
               )}

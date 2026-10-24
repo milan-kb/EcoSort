@@ -45,18 +45,29 @@ npm run preview
 
 The production preview normally runs at **http://localhost:4173**. Keep the local server running for the classroom presentation. After installation, demo mode and its coordinate map work without internet; online street tiles and external navigation naturally do not. This is a locally served application, not an installable/offline-cached PWA.
 
+## Dedicated login portals
+
+EcoSort features dedicated, role-specific authentication portals with distinct branding, role tabs, and direct workspace routing:
+
+| Portal        | Dedicated Route    | Alias Routes                                            | Description                                                     |
+| ------------- | ------------------ | ------------------------------------------------------- | --------------------------------------------------------------- |
+| **Resident**  | `/resident/login`  | `/signin/resident`, `/login/resident`                   | Household waste coordination and pickup requests.               |
+| **Collector** | `/collector/login` | `/signin/collector`, `/login/collector`                 | Field collection operations and physical verification.          |
+| **Panchayat** | `/admin/login`     | `/panchayat/login`, `/signin/panchayat`, `/login/admin` | Municipal administrative dashboard and assignment coordination. |
+
+Each login screen includes role-switching tabs to transition between portals effortlessly. On generic `/signin` or `/login`, users are presented with direct access to all three role portals.
+
 ## Demo mode
 
-Enter through the landing page or **Sign in**. Choose **Resident**, **Collector · Ravi Kumar**, **Collector · Fathima Ali**, or **Panchayat Administrator**. The visible **Demo role** selector changes the account and opens its workspace.
+EcoSort includes a classroom-ready demo mode designed for smooth live demonstrations:
 
-- All people, addresses, quantities, collection records and seed pins are **fictional**.
-- One localStorage repository backs all roles; these are not disconnected mock screens.
-- Requests, assignment changes, collections, status histories, profile edits and optional image data persist across refreshes in the **same browser and origin**.
-- **Reset demo** asks for confirmation and restores the seed. It does not erase unrelated browser storage.
-- Demo access rules are checked in the repository for workflow consistency. LocalStorage is editable and is **not a production security boundary**. Do not store real personal information in demo mode.
-- One sequential store is intended for the presentation. Concurrent tabs use last-writer-wins; use Supabase for real multi-user operations.
-- Photos are limited to JPEG/PNG/WebP, 2 MB each. Browser quotas limit the total; storage failures are shown without silently overwriting the previous record.
-- Maps start offline, showing a labeled coordinate grid, not fabricated streets. Enable **Online map tiles** for OpenStreetMap. New demo coordinates are still demo inputs, not verified real reports.
+- **Seamless authentication**: Sign in directly using any username/password (or submit the form) without rigid email format obstacles or artificial login errors.
+- **One-click account access**: Direct entry buttons (`Resident`, `Collector · Ravi Kumar`, `Panchayat Administrator`) allow entering any role immediately.
+- **Role switcher**: The global **Demo role** dropdown in the navigation header allows live switching between roles to demonstrate the end-to-end multi-stakeholder lifecycle.
+- **All seed data is synthetic**: All fictional residents, collectors, panchayat members, addresses, and collection histories are generated in-browser.
+- **Local persistence**: One localStorage repository backs all roles; changes persist across page reloads within the same browser origin.
+- **Reset demo**: Easily restore baseline fictional seed data with the "Reset demo" action in the footer or error boundary.
+- **Offline maps**: Coordinates render on an offline grid with optional OpenStreetMap live tiles.
 
 See **[DEMO_SCRIPT.md](DEMO_SCRIPT.md)** for the 3–5 minute walkthrough.
 
